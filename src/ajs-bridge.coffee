@@ -2,7 +2,6 @@ exec = require('child_process').exec
 
 _ = require 'lodash'
 ajs = require 'apple-java-script'
-#sleep = require('sleep').sleep
 async = require 'async'
 
 class AJSBridge
@@ -28,8 +27,11 @@ class AJSBridge
     _.select names, (n, i) ->
         visibility[i]
 
-  @appsWithName = (name) ->
-    _.filter(@visibleProcesses(), (v) -> (new RegExp(name)).test v).length
+  @closeAllFinderWindows = ->
+    ajs ->
+      Application('Finder')
+        .windows()
+        .forEach (w) -> w.close()
 
   @ask = (message) ->
     try

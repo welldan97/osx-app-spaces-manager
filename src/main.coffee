@@ -1,3 +1,4 @@
+ajs = require 'apple-java-script'
 AppsManager = require './apps-manager'
 meow = require 'meow'
 
@@ -8,6 +9,7 @@ cli = meow
   pkg: pkg
 
 essentialApps = [
+  'Finder'
   'iTerm'
   'Calendar'
   'Emacs-x86_64-10_9'
@@ -30,6 +32,7 @@ ensureRunningApps = [
 
 if cli.flags.k
   AppsManager.killNonEssential(essentialApps, ensureKillApps)
+  AppsManager.closeAllFinderWindows()
 
 if cli.flags.r
   AppsManager.ensureRunning ensureRunningApps

@@ -13,6 +13,9 @@ class AppsManager
     _.each appsToKill, (a) ->
       execSync "pkill -9 \"#{a}\" | true"
 
+  @closeAllFinderWindows = ->
+    AJSBridge.closeAllFinderWindows()
+
   @ensureRunning = (apps) ->
     appsToStart = _.difference apps, AJSBridge.processes()
     AJSBridge.processes()
