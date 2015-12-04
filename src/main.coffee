@@ -21,5 +21,15 @@ ensureKillApps = [
   'FullContact'
 ]
 
+ensureRunningApps = [
+  'Amethyst'
+  'Boom 2'
+  'Karabiner'
+  'iTerm'
+]
+
 if cli.flags.k
   AppsManager.killNonEssential(essentialApps, ensureKillApps)
+
+if cli.flags.r
+  AppsManager.ensureRunning ensureRunningApps

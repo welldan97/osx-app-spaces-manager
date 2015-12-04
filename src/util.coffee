@@ -13,6 +13,11 @@ class Util
       systemEvents = Application 'System Events'
       systemEvents.keystroke letter, using: ['command down', 'control down']
 
+  @processes = ->
+    ajs ->
+      systemEvents = Application('System Events')
+      systemEvents.applicationProcesses.name()
+
   @visibleProcesses = ->
     [names, visibility] = ajs ->
       systemEvents = Application('System Events')
