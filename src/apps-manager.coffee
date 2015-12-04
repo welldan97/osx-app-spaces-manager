@@ -1,10 +1,10 @@
 _ = require 'lodash'
 execSync = require('child_process').execSync
-Util = require './util'
+AJSBridge = require './ajs-bridge'
 
 class AppsManager
   @killNonEssential = (essentialApps, ensureKillApps) ->
-    runningApps = Util.visibleProcesses()
+    runningApps = AJSBridge.visibleProcesses()
     appsToKill = _(runningApps)
       .difference(essentialApps)
       .concat(ensureKillApps)
@@ -14,8 +14,8 @@ class AppsManager
       execSync "pkill -9 \"#{a}\" | true"
 
   @ensureRunning = (apps) ->
-    appsToStart = _.difference apps, Util.processes()
-    Util.processes()
+    appsToStart = _.difference apps, AJSBridge.processes()
+    AJSBridge.processes()
     _.each appsToStart, (a) ->
       execSync "open -a \"#{a}\""
 

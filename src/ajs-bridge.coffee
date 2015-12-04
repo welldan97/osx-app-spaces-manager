@@ -5,7 +5,7 @@ ajs = require 'apple-java-script'
 #sleep = require('sleep').sleep
 async = require 'async'
 
-class Util
+class AJSBridge
   LETTER_MAP = 'gcrhtnmwvz'.split('')
 
   @switchToSpace =  (n) ->
@@ -41,4 +41,4 @@ class Util
     catch e
       false
 
-module.exports = Util
+module.exports = AJSBridge
