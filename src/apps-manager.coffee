@@ -22,4 +22,8 @@ class AppsManager
     _.each appsToStart, (a) ->
       execSync "open -a \"#{a}\""
 
+  @setupSpace = (space, spaceActions, spaceKeys) ->
+    AJSBridge.switchToSpace spaceKeys[space]
+    spaceActions[space](force: true, ->)
+
 module.exports = AppsManager

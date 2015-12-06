@@ -1,34 +1,19 @@
-ajs = require 'apple-java-script'
-AppsManager = require './apps-manager'
 meow = require 'meow'
 
+{
+  essentialApps
+  ensureKillApps
+  ensureRunningApps
+  spaceActions
+  spaceKeys
+} = require './config'
+
+AppsManager = require './apps-manager'
 pkg = require '../package.json'
 
 cli = meow
   help: false
   pkg: pkg
-
-essentialApps = [
-  'Finder'
-  'iTerm'
-  'Calendar'
-  'Emacs-x86_64-10_9'
-  'Google Chrome'
-  'Skype'
-  'VOX'
-  'sqlitebrowser'
-]
-
-ensureKillApps = [
-  'FullContact'
-]
-
-ensureRunningApps = [
-  'Amethyst'
-  'Boom 2'
-  'Karabiner'
-  'iTerm'
-]
 
 if cli.flags.k
   AppsManager.killNonEssential(essentialApps, ensureKillApps)
@@ -36,3 +21,6 @@ if cli.flags.k
 
 if cli.flags.r
   AppsManager.ensureRunning ensureRunningApps
+
+if cli.flags.s
+  AppsManager.setupSpace cli.flags.s, spaceActions, spaceKeys

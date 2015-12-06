@@ -5,12 +5,10 @@ ajs = require 'apple-java-script'
 async = require 'async'
 
 class AJSBridge
-  LETTER_MAP = 'gcrhtnmwvz'.split('')
-
-  @switchToSpace =  (n) ->
-    ajs LETTER_MAP[n - 1], (letter) ->
+  @switchToSpace =  (key) ->
+    ajs key, (key) ->
       systemEvents = Application 'System Events'
-      systemEvents.keystroke letter, using: ['command down', 'control down']
+      systemEvents.keystroke key...
 
   @processes = ->
     ajs ->
