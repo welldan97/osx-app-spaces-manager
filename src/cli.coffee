@@ -1,4 +1,5 @@
 meow = require 'meow'
+require 'coffee-script/register'
 
 {
   essentialApps
@@ -6,7 +7,7 @@ meow = require 'meow'
   ensureRunningApps
   spaceActions
   spaceKeys
-} = require './config'
+} = require "#{process.env.HOME}/.osx-app-spaces-config"
 
 AppsManager = require './apps-manager'
 pkg = require '../package.json'

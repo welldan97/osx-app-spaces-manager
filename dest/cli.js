@@ -3,7 +3,9 @@ var AppsManager, cli, ensureKillApps, ensureRunningApps, essentialApps, meow, pk
 
 meow = require('meow');
 
-ref = require('./config'), essentialApps = ref.essentialApps, ensureKillApps = ref.ensureKillApps, ensureRunningApps = ref.ensureRunningApps, spaceActions = ref.spaceActions, spaceKeys = ref.spaceKeys;
+require('coffee-script/register');
+
+ref = require(process.env.HOME + "/.osx-app-spaces-config"), essentialApps = ref.essentialApps, ensureKillApps = ref.ensureKillApps, ensureRunningApps = ref.ensureRunningApps, spaceActions = ref.spaceActions, spaceKeys = ref.spaceKeys;
 
 AppsManager = require('./apps-manager');
 
