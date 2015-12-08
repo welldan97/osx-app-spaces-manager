@@ -24,6 +24,6 @@ class AppsManager
 
   @setupSpace = (space, spaceActions, spaceKeys) ->
     AJSBridge.switchToSpace spaceKeys[space]
-    spaceActions[space](force: true, ->)
+    spaceActions[space]?(force: true, ->)
 
 module.exports = AppsManager
