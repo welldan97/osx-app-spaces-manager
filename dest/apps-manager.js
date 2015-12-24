@@ -1,8 +1,10 @@
-var AJSBridge, AppsManager, _, execSync;
+var AJSBridge, AppsManager, _, execSync, sleep;
+
+execSync = require('child_process').execSync;
 
 _ = require('lodash');
 
-execSync = require('child_process').execSync;
+sleep = require('sleep').sleep;
 
 AJSBridge = require('./ajs-bridge');
 
@@ -36,6 +38,14 @@ AppsManager = (function() {
     return typeof spaceActions[space] === "function" ? spaceActions[space]({
       force: true
     }, function() {}) : void 0;
+  };
+
+  AppsManager.eachSpace = function(action, spaceKeys) {
+    return _.forEach(spaceKeys, function(k) {
+      AJSBridge.switchToSpace(k);
+      console.log(execSync(action).toString());
+      return sleep(1);
+    });
   };
 
   return AppsManager;

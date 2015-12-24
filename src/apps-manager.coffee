@@ -1,7 +1,9 @@
-_ = require 'lodash'
 execSync = require('child_process').execSync
-AJSBridge = require './ajs-bridge'
 
+_ = require 'lodash'
+sleep = require('sleep').sleep
+
+AJSBridge = require './ajs-bridge'
 class AppsManager
   @killNonEssential = (essentialApps, ensureKillApps) ->
     runningApps = AJSBridge.visibleProcesses()
@@ -25,5 +27,11 @@ class AppsManager
   @setupSpace = (space, spaceActions, spaceKeys) ->
     AJSBridge.switchToSpace spaceKeys[space]
     spaceActions[space]?(force: true, ->)
+
+  @eachSpace = (action, spaceKeys) ->
+    _.forEach spaceKeys, (k) ->
+      AJSBridge.switchToSpace k
+      console.log execSync(action).toString()
+      sleep 1
 
 module.exports = AppsManager
