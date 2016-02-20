@@ -1,10 +1,12 @@
-var AJSBridge, AppsManager, _, execSync, sleep;
+var AJSBridge, AppsManager, _, async, execSync, sleep;
 
 execSync = require('child_process').execSync;
 
 _ = require('lodash');
 
 sleep = require('sleep').sleep;
+
+async = require('async');
 
 AJSBridge = require('./ajs-bridge');
 
@@ -46,6 +48,28 @@ AppsManager = (function() {
       console.log(execSync(action).toString());
       return sleep(1);
     });
+  };
+
+  AppsManager.initSpaces = function(spaceActions, spaceKeys) {
+    var iterator, j, ref, results;
+    iterator = function(i, done) {
+      if (_.isFunction(spaceActions[i])) {
+        AJSBridge.switchToSpace(spaceKeys[i]);
+        return spaceActions[i]({
+          force: true
+        }, function() {
+          sleep(3);
+          return done();
+        });
+      } else {
+        return done();
+      }
+    };
+    return async.eachSeries((function() {
+      results = [];
+      for (var j = 0, ref = spaceKeys.length; 0 <= ref ? j < ref : j > ref; 0 <= ref ? j++ : j--){ results.push(j); }
+      return results;
+    }).apply(this), iterator, function() {});
   };
 
   return AppsManager;
