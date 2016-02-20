@@ -26,6 +26,9 @@ if cli.flags.r
 if cli.flags.s
   AppsManager.setupSpace cli.flags.s, spaceActions, spaceKeys
 
+if cli.flags.i
+  AppsManager.initSpaces(spaceActions, spaceKeys)
+
 if cli.flags.eachSpace
   console.log cli.flags.eachSpace
   AppsManager.eachSpace cli.flags.eachSpace, spaceKeys
