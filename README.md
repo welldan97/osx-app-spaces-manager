@@ -23,7 +23,7 @@ switch spaces via shortcuts. Go to:
 
 And make sure you've got shortcuts there.
 
-[!Keyboard](/Keyboard.png)
+![Keyboard](Keyboard.png)
 
 ### 2. Create configuration file
 
@@ -117,3 +117,11 @@ Run the applications from the list `ensureRunningApps`:
 ```shell
 osx-app-spaces-manager -r
 ```
+
+Example of config you can find [here][config-example]
+
+---
+
+Originally extracted from [welldan97/dotfiles][welldan97-dotfiles]
+
+[config-example]: https://github.com/welldan97/dotfiles/blob/master/dotfiles/osx/.osx-app-spaces-config.coffee
