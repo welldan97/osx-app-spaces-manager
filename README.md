@@ -130,3 +130,4 @@ Example of config you can find [here][config-example]
 Originally extracted from [welldan97/dotfiles][welldan97-dotfiles]
 
 [config-example]: https://github.com/welldan97/dotfiles/blob/master/dotfiles/osx/.osx-app-spaces-config.coffee
+[welldan97-dotfiles]: https://github.com/welldan97/dotfiles
