@@ -39,7 +39,10 @@ config = {
   spaceKeys: [...]
 };
 
-module.exports = config; ``` Notice `spaceKeys`, it's the array with keys for
+module.exports = config;
+```
+
+Notice `spaceKeys`, it's the array with keys for
 switching to spaces from first to the last. As per screenshot it will be equal
 to:
 
@@ -63,6 +66,7 @@ Ok, the next thing you would want to setup is `spaceActions`. `spaceActions` are
 actions you would want to do for each specific space. It, is an object
 containing functions for each space in format:
 
+```js
 {
   spaceActions:
     3: function(options, done) {
@@ -72,6 +76,7 @@ containing functions for each space in format:
       done();
     }
 }
+```
 
 `options` right now doesn't contain anyhing. And `done` should be called when
 you finish doing your actions on specific space. Thus you can have nested
